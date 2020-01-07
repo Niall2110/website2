@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Quick Start - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+<style>
+#overlay {
+    position:absolute;
+    width:30%;
+    height:100%;
+    left:0;
+    top:0;
+    background-color:rgba(255, 255, 255, 0.8);
+}
+</style>
+
+</head>
+<body>
+
+
+
+
+<div id="mapid" style="width: 1200px; height: 600px;"></div>
+<div id="sidebar"></div>
+<script>
+
+// var '' icon defining the type of icon, URL of icon and size of icon
+	var battleshipIcon = L.icon({iconUrl:'https://cdn1.iconfinder.com/data/icons/military-army-vehicles-and-transportations/366/military-army-vehicles-009-512.png', iconSize: [50, 50]})
+// var mymap defining the map .setview(['lat', 'long'] how far zoomed in number)
+	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+// function of map data, tiles and everything that shows up on maps using different packages and open source code
+
+// this doesn't need to be changed
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+// ^^ doesn't need to be changed
+
+// add markers to map L.marker(['Lat','Long'], {icon: 'the icon you want which is defined above'}).addTo(mymap)
+//.bindPopup(add font size, <br /> = new paragraph <img scr = 'URL of image'>, <a href= 'Source URL' target='_blank'> 'opens in new tab')
+	L.marker([51.5, -0.09], {icon: battleshipIcon}).addTo(mymap)
+		.bindPopup("<b><font size='6'>News Headline</font></b><br />News article information here.... www.factmaps.com <br //> <img src='https://e3.365dm.com/19/10/768x432/skynews-boris-johnson-prime-minister_4816498.jpg?20191026132558'> <a href= 'https://www.google.com' target='_blank'><button>Source</button></a> ").openPopup();
+	L.marker([51.5, -0.08]).addTo(mymap)
+		.bindPopup("<b>News Headline</b><br />News article information here....").openPopup();
+
+
+
+
+
+
+
+	var popup = L.popup();
+
+</script>
+
+
+
+</body>
+</html>
